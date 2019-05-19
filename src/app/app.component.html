@@ -4,6 +4,8 @@
       <form
       [formGroup]="signupForm"
       (ngSubmit)="onSubmit()"  >
+
+      <div formGroupName="userData">
         <div class="form-group">
           <label for="username">Username</label>
           <input
@@ -12,7 +14,7 @@
             formControlName="username"
             class="form-control">
             <span 
-            *ngIf="!signupForm.get('username').valid  && signupForm.get('username').touched">
+            *ngIf="!signupForm.get('userData.username').valid  && signupForm.get('userData.username').touched">
               <p>Please enter a username</p>
             </span>
         </div>
@@ -24,10 +26,13 @@
             formControlName="email"
             class="form-control">
             <span
-            *ngIf="!signupForm.get('email').valid && signupForm.get('email').touched">
+            *ngIf="!signupForm.get('userData.email').valid && signupForm.get('userData.email').touched">
               <p>Please enter a valid email address.</p>
             </span>
         </div>
+      </div>
+
+        
         <div class="radio" *ngFor="let gender of genders">
           <label>
             <input
